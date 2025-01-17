@@ -53,9 +53,12 @@ public class Guerrier extends Personnage {
         }
         boolean reussite = nbAleatoire == 1;
         if (reussite) {
-            this.setPointsVie(this.getPointsVie() - dmg / 2);
+            dmg /= 2;
+            this.setPointsVie(this.getPointsVie() - dmg);
+            System.out.println("L'attaque a été esquivée : -" + dmg + "PV seulement.");
         } else {
             this.setPointsVie(this.getPointsVie() - dmg);
+            System.out.println(this.getNom() + " tente d'esquiver, mais échoue : -" + dmg + "PV.");
         }
         /*
          * boolean esquive = false;

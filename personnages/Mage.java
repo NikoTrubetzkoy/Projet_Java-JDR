@@ -4,6 +4,8 @@ import outils.Fonctions;
 import personnages.categories.Lanceur;;
 
 public class Mage extends Personnage implements Lanceur {
+
+    public static final int FORCE_MAX = 10;
     private int mana;
 
     public Mage() {
@@ -42,9 +44,29 @@ public class Mage extends Personnage implements Lanceur {
     }
 
     @Override
-    public void attaqueDistante(Personnage p) {
+    public int attaque(Personnage cible) {
+        int myDmg = this.getForce();
+        if (this.mana > 200) {
+            myDmg *= 4;
+        }
+        if (this.mana > 50 && this.mana <= 200) {
+            myDmg *= 3;
+        }
+        if (this.mana > 20 && this.mana <= 50) {
+            myDmg *= 2;
+        }
+        if (this.mana < 1) {
+            myDmg = myDmg / 2;
+        }
+        cible.setPointsVie((cible.getPointsVie() - myDmg));
+        this.setMana(this.mana - myDmg);
+        return myDmg;
 
     }
+
+    @Override
+    public void attaqueDistante(Personnage p) {
+    };
 
     @Override
     public boolean esquiveDistante(int dmg) {

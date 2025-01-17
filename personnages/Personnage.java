@@ -76,13 +76,14 @@ public abstract class Personnage {
         this.race = race;
     }
 
-    public void attaque(Personnage cible) {
+    public int attaque(Personnage cible) {
         // changer les points de vie de la cible en fonction de la force de l'attaquant
         cible.pointsVie -= this.force;
         /*
          * Ou alors plus strictement :
          * cible.setPointsVie(cible.getPointsVie() - this.force) ;
          */
+        return this.force;
     }
 
     public abstract void esquive();
