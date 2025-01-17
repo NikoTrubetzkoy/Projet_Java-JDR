@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 import outils.Fonctions;
 import personnages.*;
 import outils.combat;
@@ -100,13 +103,21 @@ public class App {
     }
 
     public static void main(String[] args) {
-        Personnage Perso1 = setStatsPerso();
-        Personnage Perso2 = setStatsPerso();
+        List<Personnage> PersoList = new ArrayList<>();
+        for (int i = 0; i < 6; i++) {
+            PersoList.add(setStatsPerso());
+        }
+        System.out.println(PersoList);
 
-        System.out.println(Perso1.fiche());
-        System.out.println(Perso2.fiche());
-
-        combat.stageCombatRandom(Perso1, Perso2);
+        /*
+         * Personnage Perso1 = setStatsPerso();
+         * Personnage Perso2 = setStatsPerso();
+         * 
+         * System.out.println(Perso1.fiche());
+         * System.out.println(Perso2.fiche());
+         * 
+         * combat.stageCombatRandom(Perso1, Perso2);
+         */
 
     }
 }
